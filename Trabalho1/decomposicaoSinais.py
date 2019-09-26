@@ -38,7 +38,7 @@ print ('Parte impar: '+ imparpt,'\n')
 i = input('Deseja plotar os graficos? (Y/N)')
 if (i=='Y' or 'y'):
     Plotar(tmp, funcao, parpt, imparpt)
-
+else print ('Fim')
 
 
 #oddSignal = 1/2*(array1[n]-array1[])
