@@ -31,9 +31,9 @@ funcao = tmp**2
 parpt = PartePar(funcao)
 imparpt = ParteImpar(funcao)
 #somapts = Soma()
-print ('Sinal: '+ funcao,'\n')
-print ('Parte par: '+ parpt,'\n')
-print ('Parte impar: '+ imparpt,'\n')
+print ('Sinal: '+ funcao+'\n')
+print ('Parte par: '+ parpt+'\n')
+print ('Parte impar: '+ imparpt+'\n')
 #print ('Soma: ', somapts'\n')
 i = input('Deseja plotar os graficos? (Y/N)')
 if (i=='Y' or 'y'):
