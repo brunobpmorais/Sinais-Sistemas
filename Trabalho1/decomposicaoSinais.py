@@ -2,47 +2,53 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+#Definindo o comprimento do sinal
+comprimento = 20 #comprimento do sinal de entrada
+tempoinicial = -3
 
-def PartePar (entfcn):
-    flp = np.flip(entfcn)
-    evenpt = (entfcn+flp)/2
-    return evenpt
+tmp = np.arange(comprimento)    
+sinal = tmp**2
+n= tempoinicial
+lensinal = len(sinal)
 
-def ParteImpar (entfcni):
-    flp = np.flip(entfcni)
-    oddpt = (entfcni-flp)/2
-    return oddpt
+#sinal inicial
+sinalinicial = np.arange(n, n+lensinal, 1)
+iniciosinal = sinalinicial[0]
+fimsinal = sinalinicial[lensinal-1]
 
-def Plotar (t, f, ptp, pti):
-    plt.title('Sinal')
-    plt.subplot(412)
-    plt.stem(t, f)
-    plt.title('Parte Par')
-    plt.subplot(413)
-    plt.stem(t, ptp)
-    plt.title('Parte Ímpar')
-    plt.subplot(414)
-    plt.stem(t, pti)
-    plt.show()
+#-x[-n]
+xr = np.flip(sinal)
+sinalinicialR = np.arange(-fimsinal, -iniciosinal+1)
+
+#intervalo de toda a função
+vetorgeral = np.arange(min(min(sinalinicial), min(sinalinicialR)), max(max(sinalinicial), max(sinalinicialR))+1)
+lengeral = len(vetorgeral)
+
+#preenchendo com zeros
+dif = abs(lensinal-lengeral)
+zeros = np.zeros(dif)
+if vetorgeral[0]==iniciosinal:
+    xrg = np.hstack((zeros, xr))
+else:
+    xrg = np.hstack((xr, zeros))
     
- 
-tmp = np.arange(0,8)    
-funcao = tmp**2
-parpt = PartePar(funcao)
-imparpt = ParteImpar(funcao)
-#somapts = Soma()
-print ('Sinal: '+ funcao+'\n')
-print ('Parte par: '+ parpt+'\n')
-print ('Parte impar: '+ imparpt+'\n')
-#print ('Soma: ', somapts'\n')
-i = input('Deseja plotar os graficos? (Y/N)')
-if (i=='Y' or 'y'):
-    Plotar(tmp, funcao, parpt, imparpt)
-else print ('Fim')
+xg = np.flip(xrg)
 
+par = 0.5*(xg+xrg)
+impar= 0.5*(xg-xrg)
 
-#oddSignal = 1/2*(array1[n]-array1[])
+plt.title('Sinal')
+plt.stem(vetorgeral, xg)
+plt.show()
 
+plt.title('Parte Par')
+plt.stem(vetorgeral, par)
+plt.show()
 
+plt.title('Parte Ímpar')
+plt.stem(vetorgeral, impar)
+plt.show()
 
-
+plt.title('Soma de Partes Par e Ímpar')
+plt.stem(vetorgeral, par+impar)
+plt.show()
