@@ -1,13 +1,14 @@
 #importando bibliotecas
 import matplotlib.pyplot as plt
 import numpy as np
+import math as mt
 
 #Definindo o comprimento do sinal
 comprimento = 20 #comprimento do sinal de entrada
 tempoinicial = -3
 
 tmp = np.arange(comprimento)    
-sinal = tmp**2
+sinal = mt.cos(tmp)
 n= tempoinicial
 lensinal = len(sinal)
 
