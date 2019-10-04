@@ -3,19 +3,23 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math as mt
 
-#Definindo o comprimento do sinal
+#Definindo o comprimento do sinal e sinal
+def calcSignal(lenght):
+    tmp = np.arange(lenght)    
+    signal = tmp**2
+    return signal
+
+def startSignal(signal, starttime):
+    lensignal = len(signal)
+    #sinal inicial
+    startsignal = np.arange(starttime, starttime+lensignal, 1)
+    return startsignal
+
+#Definindo comprimento do sinal
 comprimento = 20 #comprimento do sinal de entrada
 tempoinicial = -3
-
-tmp = np.arange(comprimento)    
-sinal = mt.cos(tmp)
-n= tempoinicial
-lensinal = len(sinal)
-
-#sinal inicial
-sinalinicial = np.arange(n, n+lensinal, 1)
-iniciosinal = sinalinicial[0]
-fimsinal = sinalinicial[lensinal-1]
+sinal = calcSignal(comprimento)
+sinalinicial = startSignal(sinal, tempoinicial)
 
 #-x[-n]
 xr = np.flip(sinal)
@@ -35,8 +39,11 @@ else:
     
 xg = np.flip(xrg)
 
+#calcular partes par e impar segundo formula
 par = 0.5*(xg+xrg)
 impar= 0.5*(xg-xrg)
+
+#funcoes de plot 
 
 plt.title('Sinal')
 plt.stem(vetorgeral, xg)
